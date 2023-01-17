@@ -1,0 +1,16 @@
+#!/bin/sh 
+sudo touch /dev/rfcommdummy1
+while true
+do
+  result=$(hcitool con)
+  size=${#result}
+  fileResult=$(ls -l /dev/rfcomm* | wc -l) 
+  if [ $size -lt 20 ]
+  then
+    if [ $fileResult -gt 1 ]
+    then 
+      sudo rm /dev/rfcomm*
+      sudo touch /dev/rfcommdummy2 
+    fi
+  fi
+done

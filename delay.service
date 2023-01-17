@@ -1,0 +1,8 @@
+[Unit]
+Description=Delay
+
+[Service]
+ExecStart=/root/delay
+
+[Install]
+WantedBy=multi-user.target
